@@ -1,7 +1,7 @@
 %global pypi_name oslo.policy
 
 Name:           python-oslo-policy
-Version:        0.3.1
+Version:        0.3.2
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Policy library
 
@@ -66,5 +66,8 @@ rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Wed Jun 17 2015 Alan Pevec <alan.pevec@redhat.com> 0.3.2-1
+- Update to upstream 0.3.2
+
 * Sat Mar 7 2015 Dan Prince <dprince@redhat.com> - 0.3.1-1
 - Initial package

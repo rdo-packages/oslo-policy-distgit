@@ -1,7 +1,7 @@
 %global pypi_name oslo.policy
 
 Name:           python-oslo-policy
-Version:        0.3.2
+Version:        0.6.0
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Policy library
 
@@ -13,13 +13,13 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 # for docs build
-BuildRequires:  python-oslo-config >= 1.9.0
-BuildRequires:  python-oslo-i18n >= 1.3.0
-BuildRequires:  python-oslo-serialization >= 1.2.0
+BuildRequires:  python-oslo-config >= 2:1.11.0
+BuildRequires:  python-oslo-i18n >= 1.5.0
+BuildRequires:  python-oslo-serialization >= 1.4.0
 
-Requires:       python-oslo-config >= 1.9.0
-Requires:       python-oslo-i18n >= 1.3.0
-Requires:       python-oslo-serialization >= 1.2.0
+Requires:       python-oslo-config >= 2:1.11.0
+Requires:       python-oslo-i18n >= 1.5.0
+Requires:       python-oslo-serialization >= 1.4.0
 
 %description
 The OpenStack Oslo Policy library.
@@ -66,6 +66,9 @@ rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Mon Jun 29 2015 Alan Pevec <alan.pevec@redhat.com> 0.6.0-1
+- Update to upstream 0.6.0
+
 * Wed Jun 17 2015 Alan Pevec <alan.pevec@redhat.com> 0.3.2-1
 - Update to upstream 0.3.2
 

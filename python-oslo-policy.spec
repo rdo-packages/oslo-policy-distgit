@@ -2,7 +2,7 @@
 
 Name:           python-oslo-policy
 Version:        0.11.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo Policy library
 
 License:        ASL 2.0
@@ -69,6 +69,9 @@ rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.11.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 0.11.0-1
 - Update to upstream 0.11.0
 

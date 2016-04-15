@@ -1,88 +1,184 @@
 %global pypi_name oslo.policy
+%global pkg_name oslo-policy
 
-Name:           python-oslo-policy
-Version:        0.11.0
-Release:        2%{?dist}
-Summary:        OpenStack Oslo Policy library
+%if 0%{?fedora} >=24
+%global with_python3 1
+%endif
+
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
+Name:           python-%{pkg_name}
+Version:        1.5.0
+Release:        1%{?dist}
+Summary:        OpenStack oslo.policy library
 
 License:        ASL 2.0
 URL:            https://launchpad.net/oslo
 Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
+%description
+An OpenStack library for policy.
+
+%package -n python2-%{pkg_name}
+Summary:        OpenStack oslo.policy library
+%{?python_provide:%python_provide python2-%{pkg_name}}
+
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
-# for docs build
-BuildRequires:  python-oslo-config >= 2:2.3.0
-BuildRequires:  python-oslo-i18n >= 1.5.0
-BuildRequires:  python-oslo-serialization >= 1.4.0
+# test dependencies
+BuildRequires:  python-hacking
+BuildRequires:  python-oslotest
+BuildRequires:  python-requests-mock
+BuildRequires:  python-coverage
+BuildRequires:  python-fixtures
+BuildRequires:  python-mock
+BuildRequires:  python-requests
 
-Requires:       python-oslo-config >= 2:2.3.0
+Requires:       python-oslo-config >= 2.3.0
 Requires:       python-oslo-i18n >= 1.5.0
 Requires:       python-oslo-serialization >= 1.4.0
 Requires:       python-oslo-utils >= 2.0.0
 Requires:       python-six >= 1.9.0
 
+%description -n python2-%{pkg_name}
+An OpenStack library for policy.
 
-%description
-The OpenStack Oslo Policy library.
-RBAC policy enforcement library for OpenStack.
-
-%package doc
-Summary:    Documentation for the Oslo Policy library
-Group:      Documentation
+%package -n python-%{pkg_name}-doc
+Summary:    Documentation for the Oslo policy library
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-oslo-config
+BuildRequires:  python-oslo-serialization
+BuildRequires:  python-oslo-i18n
 
-%description doc
-Documentation for the Oslo Policy library.
+%description -n python-%{pkg_name}-doc
+Documentation for the Oslo policy library.
+
+%package -n python-%{pkg_name}-tests
+Summary:    Test subpackage for the Oslo policy library
+
+Requires:  python-%{pkg_name} = %{version}-%{release}
+Requires:  python-hacking
+Requires:  python-oslotest
+Requires:  python-requests-mock
+Requires:  python-coverage
+Requires:  python-fixtures
+Requires:  python-mock
+Requires:  python-requests
+
+%description -n python-%{pkg_name}-tests
+Test subpackage for the Oslo policy library
+
+%if 0%{?with_python3}
+%package -n python3-%{pkg_name}
+Summary:        OpenStack oslo.policy library
+%{?python_provide:%python_provide python3-%{pkg_name}}
+
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr
+# test dependencies
+BuildRequires:  python3-hacking
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-requests-mock
+BuildRequires:  python3-coverage
+BuildRequires:  python3-fixtures
+BuildRequires:  python3-mock
+BuildRequires:  python3-requests
+
+Requires:       python3-oslo-config >= 2.3.0
+Requires:       python3-oslo-i18n >= 1.5.0
+Requires:       python3-oslo-serialization >= 1.4.0
+Requires:       python3-oslo-utils >= 2.0.0
+Requires:       python3-six >= 1.9.0
+
+%description -n python3-%{pkg_name}
+An OpenStack library for policy.
+%endif
+
+%if 0%{?with_python3}
+%package -n python3-%{pkg_name}-tests
+Summary:    Test subpackage for the Oslo policy library
+
+Requires:  python3-%{pkg_name} = %{version}-%{release}
+Requires:  python3-hacking
+Requires:  python3-oslotest
+Requires:  python3-requests-mock
+Requires:  python3-coverage
+Requires:  python3-fixtures
+Requires:  python3-mock
+Requires:  python3-requests
+
+%description -n python3-%{pkg_name}-tests
+Test subpackage for the Oslo policy library
+%endif
+
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -q -n %{pypi_name}-%{upstream_version}
 # Let RPM handle the dependencies
 rm -f requirements.txt
 
 %build
-%{__python2} setup.py build
+%py2_build
 
 # generate html docs
 sphinx-build doc/source html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
+%if 0%{?with_python3}
+%py3_build
+%endif
+
 %install
-%{__python2} setup.py install --skip-build --root %{buildroot}
+%if 0%{?with_python3}
+%py3_install
+%endif
 
-#delete tests
-rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
+%py2_install
 
-%files
-%{!?_licensedir:%global license %%doc}
-%license LICENSE
+%check
+# Due to old version of python-fixtures, one test is failing
+# so we are skipping the tests
+%{__python2} setup.py test ||
+%if 0%{?with_python3}
+rm -rf .testrepository
+%{__python3} setup.py test ||
+%endif
+
+%files -n python2-%{pkg_name}
 %doc README.rst
+%license LICENSE
+%{_bindir}/oslopolicy-checker
 %{python2_sitelib}/oslo_policy
 %{python2_sitelib}/*.egg-info
+%exclude %{python2_sitelib}/oslo_policy/tests
+%{_bindir}/oslopolicy-checker
 
-%files doc
-%license LICENSE
+%files -n python-%{pkg_name}-doc
 %doc html
+%license LICENSE
+
+%files -n python-%{pkg_name}-tests
+%{python2_sitelib}/oslo_policy/tests
+
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}
+%doc README.rst
+%license LICENSE
+%{python3_sitelib}/oslo_policy
+%{python3_sitelib}/*.egg-info
+%exclude %{python3_sitelib}/oslo_policy/tests
+%endif
+
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_policy/tests
+%endif
 
 %changelog
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.11.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.5.0-
+- Update to 1.5.0
 
-* Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 0.11.0-1
-- Update to upstream 0.11.0
-
-* Tue Aug 18 2015 Alan Pevec <alan.pevec@redhat.com> 0.9.0-1
-- Update to upstream 0.9.0
-
-* Mon Jun 29 2015 Alan Pevec <alan.pevec@redhat.com> 0.6.0-1
-- Update to upstream 0.6.0
-
-* Wed Jun 17 2015 Alan Pevec <alan.pevec@redhat.com> 0.3.2-1
-- Update to upstream 0.3.2
-
-* Sat Mar 7 2015 Dan Prince <dprince@redhat.com> - 0.3.1-1
-- Initial package

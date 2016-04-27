@@ -32,12 +32,14 @@ BuildRequires:  python-coverage
 BuildRequires:  python-fixtures
 BuildRequires:  python-mock
 BuildRequires:  python-requests
+BuildRequires:  PyYAML >= 3.1.0
 
 Requires:       python-oslo-config >= 2.3.0
 Requires:       python-oslo-i18n >= 1.5.0
 Requires:       python-oslo-serialization >= 1.4.0
 Requires:       python-oslo-utils >= 2.0.0
 Requires:       python-six >= 1.9.0
+Requires:       PyYAML >= 3.1.0
 
 %description -n python2-%{pkg_name}
 An OpenStack library for policy.
@@ -84,12 +86,14 @@ BuildRequires:  python3-coverage
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-requests
+BuildRequires:  python3-PyYAML >= 3.1.0
 
 Requires:       python3-oslo-config >= 2.3.0
 Requires:       python3-oslo-i18n >= 1.5.0
 Requires:       python3-oslo-serialization >= 1.4.0
 Requires:       python3-oslo-utils >= 2.0.0
 Requires:       python3-six >= 1.9.0
+Requires:       python3-PyYAML >= 3.1.0
 
 %description -n python3-%{pkg_name}
 An OpenStack library for policy.

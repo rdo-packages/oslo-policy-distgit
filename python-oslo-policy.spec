@@ -154,10 +154,10 @@ rm -rf .testrepository
 %doc README.rst
 %license LICENSE
 %{_bindir}/oslopolicy-checker
+%{_bindir}/oslopolicy-sample-generator
 %{python2_sitelib}/oslo_policy
 %{python2_sitelib}/*.egg-info
 %exclude %{python2_sitelib}/oslo_policy/tests
-%{_bindir}/oslopolicy-checker
 
 %files -n python-%{pkg_name}-doc
 %doc html

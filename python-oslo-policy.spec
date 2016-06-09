@@ -154,6 +154,8 @@ rm -rf .testrepository
 %doc README.rst
 %license LICENSE
 %{_bindir}/oslopolicy-checker
+%{_bindir}/oslopolicy-list-redundant
+%{_bindir}/oslopolicy-policy-generator
 %{_bindir}/oslopolicy-sample-generator
 %{python2_sitelib}/oslo_policy
 %{python2_sitelib}/*.egg-info

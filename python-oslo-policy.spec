@@ -8,7 +8,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pkg_name}
-Version:        1.5.0
+Version:        1.6.0
 Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
@@ -179,6 +179,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Wed Sep 07 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.6.0-1
+- Update to 1.6.0
+
 * Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.5.0-
 - Update to 1.5.0
 

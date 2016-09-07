@@ -36,10 +36,10 @@ BuildRequires:  PyYAML >= 3.1.0
 # Required to compile translation files
 BuildRequires:  python-babel
 
-Requires:       python-oslo-config >= 2.3.0
-Requires:       python-oslo-i18n >= 1.5.0
-Requires:       python-oslo-serialization >= 1.4.0
-Requires:       python-oslo-utils >= 2.0.0
+Requires:       python-oslo-config >= 2:3.14.0
+Requires:       python-oslo-i18n >= 2.1.0
+Requires:       python-oslo-serialization >= 1.10.0
+Requires:       python-oslo-utils >= 3.16.0
 Requires:       python-six >= 1.9.0
 Requires:       PyYAML >= 3.1.0
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
@@ -91,10 +91,10 @@ BuildRequires:  python3-mock
 BuildRequires:  python3-requests
 BuildRequires:  python3-PyYAML >= 3.1.0
 
-Requires:       python3-oslo-config >= 2.3.0
-Requires:       python3-oslo-i18n >= 1.5.0
-Requires:       python3-oslo-serialization >= 1.4.0
-Requires:       python3-oslo-utils >= 2.0.0
+Requires:       python3-oslo-config >= 2:3.14.0
+Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-oslo-utils >= 3.16.0
 Requires:       python3-six >= 1.9.0
 Requires:       python3-PyYAML >= 3.1.0
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}

@@ -35,6 +35,8 @@ BuildRequires:  python-fixtures
 BuildRequires:  python-mock
 BuildRequires:  python-requests
 BuildRequires:  PyYAML >= 3.1.0
+# Required to compile translation files
+BuildRequires:  python-babel
 
 Requires:       python-oslo-config >= 2:3.14.0
 Requires:       python-oslo-i18n >= 2.1.0
@@ -42,6 +44,7 @@ Requires:       python-oslo-serialization >= 1.10.0
 Requires:       python-oslo-utils >= 3.16.0
 Requires:       python-six >= 1.9.0
 Requires:       PyYAML >= 3.1.0
+Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
 An OpenStack library for policy.
@@ -96,6 +99,7 @@ Requires:       python3-oslo-serialization >= 1.10.0
 Requires:       python3-oslo-utils >= 3.16.0
 Requires:       python3-six >= 1.9.0
 Requires:       python3-PyYAML >= 3.1.0
+Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
 An OpenStack library for policy.
@@ -118,11 +122,20 @@ Requires:  python3-requests
 Test subpackage for the Oslo policy library
 %endif
 
+%package  -n python-%{pkg_name}-lang
+Summary:   Translation files for Oslo policy library
+
+%description -n python-%{pkg_name}-lang
+Translation files for Oslo policy library
 
 %prep
 %setup -q -n %{pypi_name}-%{upstream_version}
 # Let RPM handle the dependencies
 rm -f requirements.txt
+
+# FIXME (jpena): Remove buggy PO-Revision-Date lines in translation
+# See https://bugs.launchpad.net/openstack-i18n/+bug/1586041 for details
+sed -i '/^\"PO-Revision-Date: \\n\"/d' oslo_policy/locale/*/LC_MESSAGES/*.po
 
 %build
 %py2_build
@@ -131,6 +144,8 @@ rm -f requirements.txt
 sphinx-build doc/source html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
+# Generate i18n files
+%{__python2} setup.py compile_catalog -d build/lib/oslo_policy/locale
 
 %if 0%{?with_python3}
 %py3_build
@@ -142,6 +157,18 @@ rm -rf html/.{doctrees,buildinfo}
 %endif
 
 %py2_install
+
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python2_sitelib}/oslo_policy/locale/*/LC_*/oslo_policy*po
+rm -f %{buildroot}%{python2_sitelib}/oslo_policy/locale/*pot
+mv %{buildroot}%{python2_sitelib}/oslo_policy/locale %{buildroot}%{_datadir}/locale
+%if 0%{?with_python3}
+rm -rf %{buildroot}%{python3_sitelib}/oslo_policy/locale
+%endif
+
+# Find language files
+%find_lang oslo_policy --all-name
 
 %check
 # Due to old version of python-fixtures, one test is failing
@@ -169,6 +196,9 @@ rm -rf .testrepository
 
 %files -n python-%{pkg_name}-tests
 %{python2_sitelib}/oslo_policy/tests
+
+%files -n python-%{pkg_name}-lang -f oslo_policy.lang
+%license LICENSE
 
 %if 0%{?with_python3}
 %files -n python3-%{pkg_name}

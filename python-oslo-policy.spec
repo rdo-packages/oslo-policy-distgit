@@ -196,6 +196,7 @@ rm -rf .testrepository
 %{python2_sitelib}/oslo_policy/tests
 
 %files -n python-%{pkg_name}-lang -f oslo_policy.lang
+%license LICENSE
 
 %if 0%{?with_python3}
 %files -n python3-%{pkg_name}

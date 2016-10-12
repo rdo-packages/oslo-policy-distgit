@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_e5ac728f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-10-12T23:02:29Z",
+      "side": 1,
+      "message": "Where is that from? Also that line usually comes as last when you do cherry-pick -x. \n\nBut is this review on the right branch (rpm-master) \nor this was supposed on newton-rdo branch?",
+      "revId": "565bb93922819eaae7215e97c1a5a953ed66d5c8",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

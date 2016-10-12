@@ -16,6 +16,24 @@
       "revId": "565bb93922819eaae7215e97c1a5a953ed66d5c8",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_65b062de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-10-12T23:05:42Z",
+      "side": 1,
+      "message": "Uhm I see now, looks like this was pushed directly to newton-rdo without sending review to rpm-master:\n \nhttps://review.rdoproject.org/r/gitweb?p\u003dopenstack/oslo-policy-distgit.git;a\u003dcommit;h\u003d8bf86f1bde76de756425456d93d2506dc288e13d",
+      "parentUuid": "9ad9bd40_e5ac728f",
+      "revId": "565bb93922819eaae7215e97c1a5a953ed66d5c8",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }

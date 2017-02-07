@@ -1,3 +1,4 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pypi_name oslo.policy
 %global pkg_name oslo-policy
 
@@ -12,7 +13,7 @@ Summary:        OpenStack oslo.policy library
 
 License:        ASL 2.0
 URL:            https://launchpad.net/oslo
-Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{ustream_version}.tar.gz
 BuildArch:      noarch
 
 %description

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baada198_6add7914",
+        "filename": "python-oslo-policy.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2017-02-07T22:26:03Z",
+      "side": 1,
+      "message": "typo. Also, there\u0027s no fallback macro defined in the spec.",
+      "range": {
+        "startLine": 15,
+        "startChar": 74,
+        "endLine": 15,
+        "endChar": 86
+      },
+      "revId": "7e384681e64ca3808a0f7dd5aae5d54f1adcfb10",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

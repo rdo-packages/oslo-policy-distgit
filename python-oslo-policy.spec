@@ -216,3 +216,4 @@ rm -rf .testrepository
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.policy/commit/?id=5d76e78009018e5bde3154c49cbe6af46dc28b35

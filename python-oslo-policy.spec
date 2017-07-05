@@ -23,6 +23,7 @@ An OpenStack library for policy.
 Summary:        OpenStack oslo.policy library
 %{?python_provide:%python_provide python2-%{pkg_name}}
 
+BuildRequires:  git
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 # test dependencies
@@ -53,7 +54,7 @@ An OpenStack library for policy.
 Summary:    Documentation for the Oslo policy library
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-oslo-config
 BuildRequires:  python-oslo-serialization
 BuildRequires:  python-oslo-i18n
@@ -130,7 +131,7 @@ Summary:   Translation files for Oslo policy library
 Translation files for Oslo policy library
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 # Let RPM handle the dependencies
 rm -f requirements.txt
 
@@ -142,9 +143,10 @@ sed -i '/^\"PO-Revision-Date: \\n\"/d' oslo_policy/locale/*/LC_MESSAGES/*.po
 %py2_build
 
 # generate html docs
-sphinx-build doc/source html
-# remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+%{__python2} setup.py build_sphinx -b html
+# Fix hidden-file-or-dir warnings
+rm -rf doc/build/html/.{doctrees,buildinfo}
+
 # Generate i18n files
 %{__python2} setup.py compile_catalog -d build/lib/oslo_policy/locale
 

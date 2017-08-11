@@ -30,7 +30,6 @@ BuildRequires:  python-pbr
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
 BuildRequires:  python-requests-mock
-BuildRequires:  python-coverage
 BuildRequires:  python-fixtures
 BuildRequires:  python-mock
 BuildRequires:  python-requests
@@ -69,7 +68,6 @@ Requires:  python-%{pkg_name} = %{version}-%{release}
 Requires:  python-hacking
 Requires:  python-oslotest
 Requires:  python-requests-mock
-Requires:  python-coverage
 Requires:  python-fixtures
 Requires:  python-mock
 Requires:  python-requests
@@ -88,7 +86,6 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-coverage
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-requests
@@ -115,7 +112,6 @@ Requires:  python3-%{pkg_name} = %{version}-%{release}
 Requires:  python3-hacking
 Requires:  python3-oslotest
 Requires:  python3-requests-mock
-Requires:  python3-coverage
 Requires:  python3-fixtures
 Requires:  python3-mock
 Requires:  python3-requests

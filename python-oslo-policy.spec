@@ -170,13 +170,11 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_policy/locale
 %find_lang oslo_policy --all-name
 
 %check
-# Due to old version of python-fixtures, one test is failing
-# so we are skipping the tests
-%{__python2} setup.py test ||
 %if 0%{?with_python3}
+%{__python3} setup.py test
 rm -rf .testrepository
-%{__python3} setup.py test ||
 %endif
+%{__python2} setup.py test
 
 %files -n python2-%{pkg_name}
 %doc README.rst

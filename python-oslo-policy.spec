@@ -1,6 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pypi_name oslo.policy
 %global pkg_name oslo-policy
+%global with_doc 1
 
 %if 0%{?fedora} >=24
 %global with_python3 1
@@ -49,6 +50,7 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 %description -n python2-%{pkg_name}
 An OpenStack library for policy.
 
+%if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo policy library
 
@@ -60,6 +62,7 @@ BuildRequires:  python-oslo-i18n
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo policy library.
+%endif
 
 %package -n python-%{pkg_name}-tests
 Summary:    Test subpackage for the Oslo policy library
@@ -138,10 +141,12 @@ sed -i '/^\"PO-Revision-Date: \\n\"/d' oslo_policy/locale/*/LC_MESSAGES/*.po
 %build
 %py2_build
 
+%if 0%{?with_doc}
 # generate html docs
 %{__python2} setup.py build_sphinx -b html
 # Fix hidden-file-or-dir warnings
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 # Generate i18n files
 %{__python2} setup.py compile_catalog -d build/lib/oslo_policy/locale
@@ -187,9 +192,11 @@ rm -rf .testrepository
 %{python2_sitelib}/*.egg-info
 %exclude %{python2_sitelib}/oslo_policy/tests
 
+%if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
 %doc doc/build/html
 %license LICENSE
+%endif
 
 %files -n python-%{pkg_name}-tests
 %{python2_sitelib}/oslo_policy/tests

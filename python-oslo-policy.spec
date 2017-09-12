@@ -2,6 +2,11 @@
 %global pypi_name oslo.policy
 %global pkg_name oslo-policy
 %global with_doc 1
+%global common_desc \
+An OpenStack library for policy.
+
+%global common_desc1 \
+Test subpackage for the Oslo policy library.
 
 %if 0%{?fedora} >=24
 %global with_python3 1
@@ -18,7 +23,7 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 BuildArch:      noarch
 
 %description
-An OpenStack library for policy.
+%{common_desc}
 
 %package -n python2-%{pkg_name}
 Summary:        OpenStack oslo.policy library
@@ -48,7 +53,7 @@ Requires:       PyYAML >= 3.10
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
-An OpenStack library for policy.
+%{common_desc}
 
 %if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
@@ -76,7 +81,7 @@ Requires:  python-mock
 Requires:  python-requests
 
 %description -n python-%{pkg_name}-tests
-Test subpackage for the Oslo policy library
+%{common_desc1}
 
 %if 0%{?with_python3}
 %package -n python3-%{pkg_name}
@@ -104,7 +109,7 @@ Requires:       python3-PyYAML >= 3.10
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
-An OpenStack library for policy.
+%{common_desc}
 %endif
 
 %if 0%{?with_python3}
@@ -120,7 +125,7 @@ Requires:  python3-mock
 Requires:  python3-requests
 
 %description -n python3-%{pkg_name}-tests
-Test subpackage for the Oslo policy library
+%{common_desc1}
 %endif
 
 %package  -n python-%{pkg_name}-lang

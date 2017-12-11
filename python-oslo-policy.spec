@@ -34,12 +34,15 @@ BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 # test dependencies
 BuildRequires:  python-hacking
+BuildRequires:  python-oslo-config
+BuildRequires:  python-oslo-serialization
 BuildRequires:  python-oslotest
 BuildRequires:  python-requests-mock
 BuildRequires:  python-fixtures
 BuildRequires:  python-mock
 BuildRequires:  python-requests
 BuildRequires:  PyYAML >= 3.1.0
+BuildRequires:  python-stevedore
 # Required to compile translation files
 BuildRequires:  python-babel
 
@@ -61,8 +64,6 @@ Summary:    Documentation for the Oslo policy library
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-oslo-config
-BuildRequires:  python-oslo-serialization
 BuildRequires:  python-oslo-i18n
 
 %description -n python-%{pkg_name}-doc
@@ -92,12 +93,15 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 # test dependencies
 BuildRequires:  python3-hacking
+BuildRequires:  python3-oslo-config
+BuildRequires:  python3-oslo-serialization
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-requests
 BuildRequires:  python3-PyYAML >= 3.1.0
+BuildRequires:  python3-stevedore
 
 Requires:       python3-oslo-config >= 2:4.0.0
 Requires:       python3-oslo-i18n >= 2.1.0

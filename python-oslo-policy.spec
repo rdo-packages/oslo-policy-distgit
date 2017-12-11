@@ -40,6 +40,7 @@ BuildRequires:  python-fixtures
 BuildRequires:  python-mock
 BuildRequires:  python-requests
 BuildRequires:  PyYAML >= 3.1.0
+BuildRequires:  python-stevedore
 # Required to compile translation files
 BuildRequires:  python-babel
 
@@ -98,6 +99,7 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-requests
 BuildRequires:  python3-PyYAML >= 3.1.0
+BuildRequires:  python3-stevedore
 
 Requires:       python3-oslo-config >= 2:4.0.0
 Requires:       python3-oslo-i18n >= 2.1.0

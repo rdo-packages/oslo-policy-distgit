@@ -31,30 +31,40 @@ Summary:        OpenStack oslo.policy library
 
 BuildRequires:  git
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
+BuildRequires:  python2-pbr
 # test dependencies
-BuildRequires:  python-hacking
-BuildRequires:  python-oslo-config
-BuildRequires:  python-oslo-serialization
-BuildRequires:  python-oslotest
-BuildRequires:  python-requests-mock
-BuildRequires:  python-fixtures
-BuildRequires:  python-mock
-BuildRequires:  python-requests
-BuildRequires:  PyYAML >= 3.1.0
-BuildRequires:  python-stevedore
-BuildRequires:  python-docutils
-BuildRequires:  python-sphinx
+BuildRequires:  python2-hacking
+BuildRequires:  python2-oslo-config
+BuildRequires:  python2-oslo-serialization
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-fixtures
+BuildRequires:  python2-mock
+BuildRequires:  python2-requests
+BuildRequires:  python2-stevedore
+BuildRequires:  python2-sphinx
 # Required to compile translation files
-BuildRequires:  python-babel
+BuildRequires:  python2-babel
+%if 0%{?fedora} > 0
+BuildRequires:  python2-requests-mock
+BuildRequires:  python2-docutils
+BuildRequires:  python2-pyyaml >= 3.1.0
+%else
+BuildRequires:  python-requests-mock
+BuildRequires:  python-docutils
+BuildRequires:  PyYAML >= 3.1.0
+%endif
 
-Requires:       python-oslo-config >= 2:4.0.0
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-serialization >= 1.10.0
-Requires:       python-oslo-utils >= 3.16.0
-Requires:       python-six >= 1.9.0
-Requires:       python-stevedore >= 1.20.0
+Requires:       python2-requests
+Requires:       python2-oslo-config >= 2:5.1.0
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-oslo-serialization >= 2.18.0
+Requires:       python2-six >= 1.10.0
+Requires:       python2-stevedore >= 1.20.0
+%if 0%{?fedora} > 0
+Requires:       python2-pyyaml >= 3.10
+%else
 Requires:       PyYAML >= 3.10
+%endif
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
@@ -64,26 +74,31 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo policy library
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-oslo-i18n
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-oslo-i18n
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo policy library.
 %endif
 
-%package -n python-%{pkg_name}-tests
+%package -n python2-%{pkg_name}-tests
 Summary:    Test subpackage for the Oslo policy library
+%{?python_provide:%python_provide python2-%{pkg_name}}
 
-Requires:  python-%{pkg_name} = %{version}-%{release}
-Requires:  python-hacking
-Requires:  python-oslotest
+Requires:  python2-%{pkg_name} = %{version}-%{release}
+Requires:  python2-hacking
+Requires:  python2-oslotest
+Requires:  python2-fixtures
+Requires:  python2-mock
+Requires:  python2-requests
+%if 0%{?fedora} > 0
+Requires:  python2-requests-mock
+%else
 Requires:  python-requests-mock
-Requires:  python-fixtures
-Requires:  python-mock
-Requires:  python-requests
+%endif
 
-%description -n python-%{pkg_name}-tests
+%description -n python2-%{pkg_name}-tests
 %{common_desc1}
 
 %if 0%{?with_python3}
@@ -105,11 +120,10 @@ BuildRequires:  python3-requests
 BuildRequires:  python3-PyYAML >= 3.1.0
 BuildRequires:  python3-stevedore
 
-Requires:       python3-oslo-config >= 2:4.0.0
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-serialization >= 1.10.0
-Requires:       python3-oslo-utils >= 3.16.0
-Requires:       python3-six >= 1.9.0
+Requires:       python3-oslo-config >= 2:5.1.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-serialization >= 2.18.0
+Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-PyYAML >= 3.10
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
@@ -209,7 +223,7 @@ rm -rf .testrepository
 %license LICENSE
 %endif
 
-%files -n python-%{pkg_name}-tests
+%files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_policy/tests
 
 %files -n python-%{pkg_name}-lang -f oslo_policy.lang

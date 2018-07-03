@@ -41,6 +41,7 @@ BuildRequires:  python2-fixtures
 BuildRequires:  python2-mock
 BuildRequires:  python2-requests
 BuildRequires:  python2-stevedore
+BuildRequires:  python2-stestr
 BuildRequires:  python2-sphinx
 # Required to compile translation files
 BuildRequires:  python2-babel
@@ -109,6 +110,7 @@ Summary:        OpenStack oslo.policy library
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 # test dependencies
+BuildRequires:  python3-docutils
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslo-config
 BuildRequires:  python3-oslo-serialization
@@ -118,7 +120,9 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-requests
 BuildRequires:  python3-PyYAML >= 3.1.0
+BuildRequires:  python3-sphinx
 BuildRequires:  python3-stevedore
+BuildRequires:  python3-stestr
 
 Requires:       python3-oslo-config >= 2:5.1.0
 Requires:       python3-oslo-i18n >= 3.15.3
@@ -157,7 +161,7 @@ Translation files for Oslo policy library
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
 # Let RPM handle the dependencies
-rm -f requirements.txt
+rm -f *requirements.txt
 
 # FIXME (jpena): Remove buggy PO-Revision-Date lines in translation
 # See https://bugs.launchpad.net/openstack-i18n/+bug/1586041 for details
@@ -200,11 +204,11 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_policy/locale
 %find_lang oslo_policy --all-name
 
 %check
+export OS_TEST_PATH="./oslo_policy/tests"
 %if 0%{?with_python3}
-%{__python3} setup.py test
-rm -rf .testrepository
+stestr-3 --test-path $OS_TEST_PATH run
 %endif
-%{__python2} setup.py test
+stestr --test-path $OS_TEST_PATH run
 
 %files -n python2-%{pkg_name}
 %doc README.rst

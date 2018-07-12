@@ -248,3 +248,4 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.policy/commit/?id=f319967738e671e1400052e39116ff3c23b9f9a0

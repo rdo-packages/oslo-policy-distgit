@@ -57,7 +57,7 @@ BuildRequires:  PyYAML >= 3.1.0
 %endif
 
 Requires:       python2-requests
-Requires:       python2-oslo-config >= 2:5.1.0
+Requires:       python2-oslo-config >= 2:5.2.0
 Requires:       python2-oslo-context >= 2.21.0
 Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-serialization >= 2.18.0
@@ -127,7 +127,7 @@ BuildRequires:  python3-sphinx
 BuildRequires:  python3-stevedore
 BuildRequires:  python3-stestr
 
-Requires:       python3-oslo-config >= 2:5.1.0
+Requires:       python3-oslo-config >= 2:5.2.0
 Requires:       python3-oslo-context >= 2.21.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0

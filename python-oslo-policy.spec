@@ -13,8 +13,8 @@ Test subpackage for the Oslo policy library.
 %endif
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        1.38.1
+Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
 License:        ASL 2.0
@@ -252,3 +252,6 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+* Tue Aug 07 2018 RDO <dev@lists.rdoproject.org> 1.38.1-1
+- Update to 1.38.1
+

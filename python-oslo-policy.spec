@@ -191,9 +191,24 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %install
 %if 0%{?with_python3}
 %py3_install
+pushd %{buildroot}/%{_bindir}
+for item in checker list-redundant policy-generator sample-generator
+do
+  mv oslopolicy-$item oslopolicy-$item-%{python3_version}
+  ln -s oslopolicy-$item-%{python3_version} oslopolicy-$item-3
+done
+popd
 %endif
 
 %py2_install
+pushd %{buildroot}/%{_bindir}
+for item in checker list-redundant policy-generator sample-generator
+do
+  mv oslopolicy-$item oslopolicy-$item-%{python2_version}
+  ln -s oslopolicy-$item-%{python2_version} oslopolicy-$item-2
+  ln -s oslopolicy-$item-%{python2_version} oslopolicy-$item
+done
+popd
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
@@ -218,9 +233,13 @@ stestr --test-path $OS_TEST_PATH run
 %doc README.rst
 %license LICENSE
 %{_bindir}/oslopolicy-checker
+%{_bindir}/oslopolicy-checker-2*
 %{_bindir}/oslopolicy-list-redundant
+%{_bindir}/oslopolicy-list-redundant-2*
 %{_bindir}/oslopolicy-policy-generator
+%{_bindir}/oslopolicy-policy-generator-2*
 %{_bindir}/oslopolicy-sample-generator
+%{_bindir}/oslopolicy-sample-generator-2*
 %{python2_sitelib}/oslo_policy
 %{python2_sitelib}/*.egg-info
 %exclude %{python2_sitelib}/oslo_policy/tests
@@ -241,6 +260,10 @@ stestr --test-path $OS_TEST_PATH run
 %files -n python3-%{pkg_name}
 %doc README.rst
 %license LICENSE
+%{_bindir}/oslopolicy-checker-3*
+%{_bindir}/oslopolicy-list-redundant-3*
+%{_bindir}/oslopolicy-policy-generator-3*
+%{_bindir}/oslopolicy-sample-generator-3*
 %{python3_sitelib}/oslo_policy
 %{python3_sitelib}/*.egg-info
 %exclude %{python3_sitelib}/oslo_policy/tests

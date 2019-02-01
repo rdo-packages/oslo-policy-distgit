@@ -200,3 +200,4 @@ stestr-%{pyver} --test-path $OS_TEST_PATH run
 %license LICENSE
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.policy/commit/?id=ce31c0fce996444d3a147ec634ff3388b79d3b2a

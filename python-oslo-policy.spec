@@ -174,6 +174,7 @@ stestr-%{pyver} --test-path $OS_TEST_PATH run
 %files -n python%{pyver}-%{pkg_name}
 %doc README.rst
 %license LICENSE
+%{_bindir}/oslopolicy-policy-upgrade
 %{_bindir}/oslopolicy-checker
 %{_bindir}/oslopolicy-checker-%{pyver}
 %{_bindir}/oslopolicy-list-redundant

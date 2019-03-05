@@ -70,7 +70,7 @@ BuildRequires:  python%{pyver}-PyYAML >= 3.1.0
 
 Requires:       python%{pyver}-requests
 Requires:       python%{pyver}-oslo-config >= 2:5.2.0
-Requires:       python%{pyver}-oslo-context >= 2.21.0
+Requires:       python%{pyver}-oslo-context >= 2.22.0
 Requires:       python%{pyver}-oslo-i18n >= 3.15.3
 Requires:       python%{pyver}-oslo-serialization >= 2.18.0
 Requires:       python%{pyver}-six >= 1.10.0

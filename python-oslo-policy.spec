@@ -61,16 +61,16 @@ BuildRequires:  python%{pyver}-babel
 %if %{pyver} == 2
 BuildRequires:  python-requests-mock
 BuildRequires:  python-docutils
-BuildRequires:  PyYAML >= 3.1.0
+BuildRequires:  PyYAML >= 3.12
 %else
 BuildRequires:  python%{pyver}-requests-mock
 BuildRequires:  python%{pyver}-docutils
-BuildRequires:  python%{pyver}-PyYAML >= 3.1.0
+BuildRequires:  python%{pyver}-PyYAML >= 3.12
 %endif
 
 Requires:       python%{pyver}-requests
 Requires:       python%{pyver}-oslo-config >= 2:5.2.0
-Requires:       python%{pyver}-oslo-context >= 2.21.0
+Requires:       python%{pyver}-oslo-context >= 2.22.0
 Requires:       python%{pyver}-oslo-i18n >= 3.15.3
 Requires:       python%{pyver}-oslo-serialization >= 2.18.0
 Requires:       python%{pyver}-six >= 1.10.0
@@ -78,9 +78,9 @@ Requires:       python%{pyver}-stevedore >= 1.20.0
 
 # Handle python2 exception
 %if %{pyver} == 2
-Requires:  PyYAML >= 3.1.0
+Requires:  PyYAML >= 3.12
 %else
-Requires:  python%{pyver}-PyYAML >= 3.1.0
+Requires:  python%{pyver}-PyYAML >= 3.12
 %endif
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 

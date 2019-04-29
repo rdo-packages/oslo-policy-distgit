@@ -7,7 +7,7 @@
 %endif
 
 Name:           python-%{pkg_name}
-Version:        1.25.3
+Version:        1.25.4
 Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
@@ -218,6 +218,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Mon Apr 29 2019 RDO <dev@lists.rdoproject.org> 1.25.4-1
+- Update to 1.25.4
+
 * Fri Aug 10 2018 RDO <dev@lists.rdoproject.org> 1.25.3-1
 - Update to 1.25.3
 

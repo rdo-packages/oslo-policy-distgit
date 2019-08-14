@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f5ce421_71361778",
+        "filename": "python-oslo-policy.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2019-08-14T19:58:54Z",
+      "side": 1,
+      "message": "need to drop it for now, for details see \nhttps://review.rdoproject.org/r/21839",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "8415ca6bb6819e922241b9d93ee6b2de6fda70fd",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}

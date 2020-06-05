@@ -120,7 +120,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 # Generate i18n files
-python3 setup.py compile_catalog -d build/lib/oslo_policy/locale
+python3 setup.py compile_catalog -d build/lib/oslo_policy/locale --domain oslo_policy
 
 %install
 %{py3_install}

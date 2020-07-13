@@ -157,6 +157,7 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 %{_bindir}/oslopolicy-policy-generator-3
 %{_bindir}/oslopolicy-sample-generator
 %{_bindir}/oslopolicy-sample-generator-3
+%{_bindir}/oslopolicy-validator
 %{python3_sitelib}/oslo_policy
 %{python3_sitelib}/*.egg-info
 %exclude %{python3_sitelib}/oslo_policy/tests

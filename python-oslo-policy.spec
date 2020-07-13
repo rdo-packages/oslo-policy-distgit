@@ -20,7 +20,7 @@ An OpenStack library for policy.
 Test subpackage for the Oslo policy library.
 
 Name:           python-%{pkg_name}
-Version:        2.3.3
+Version:        2.3.4
 Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
@@ -203,6 +203,9 @@ PYTHON=%{pyver_bin} stestr-%{pyver} --test-path $OS_TEST_PATH run
 %license LICENSE
 
 %changelog
+* Mon Jul 13 2020 RDO <dev@lists.rdoproject.org> 2.3.4-1
+- Update to 2.3.4
+
 * Mon Jan 13 2020 RDO <dev@lists.rdoproject.org> 2.3.3-1
 - Update to 2.3.3
 

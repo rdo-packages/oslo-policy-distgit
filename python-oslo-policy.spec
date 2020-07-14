@@ -176,3 +176,4 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 
 %changelog
 
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.policy/commit/?id=719435f7323e55ee6b890f622d0fe9533b635adb

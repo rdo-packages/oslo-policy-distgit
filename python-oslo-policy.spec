@@ -152,6 +152,7 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run --black-regex test_generat
 %{_bindir}/oslopolicy-policy-upgrade
 %{_bindir}/oslopolicy-checker
 %{_bindir}/oslopolicy-checker-3
+%{_bindir}/oslopolicy-convert-json-to-yaml
 %{_bindir}/oslopolicy-list-redundant
 %{_bindir}/oslopolicy-list-redundant-3
 %{_bindir}/oslopolicy-policy-generator

@@ -9,8 +9,8 @@ An OpenStack library for policy.
 Test subpackage for the Oslo policy library.
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        3.5.0
+Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
 License:        ASL 2.0
@@ -177,4 +177,7 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run --black-regex test_generat
 %license LICENSE
 
 %changelog
+* Fri Sep 18 2020 RDO <dev@lists.rdoproject.org> 3.5.0-1
+- Update to 3.5.0
+
 

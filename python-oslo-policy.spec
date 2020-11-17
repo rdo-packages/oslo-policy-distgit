@@ -39,7 +39,7 @@ Summary:        OpenStack oslo.policy library
 %{?python_provide:%python_provide python3-%{pkg_name}}
 Obsoletes: python2-%{pkg_name} < %{version}-%{release}
 
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 # test dependencies

@@ -66,11 +66,10 @@ Requires:       python3-oslo-config >= 2:5.2.0
 Requires:       python3-oslo-context >= 2.22.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0
-Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 Requires:       python3-oslo-utils >= 3.40.0
 
-Requires:  python3-PyYAML >= 3.1.0
+Requires:       python3-yaml >= 5.1
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}

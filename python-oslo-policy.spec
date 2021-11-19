@@ -9,7 +9,7 @@ An OpenStack library for policy.
 Test subpackage for the Oslo policy library.
 
 Name:           python-%{pkg_name}
-Version:        3.1.1
+Version:        3.1.2
 Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
@@ -174,6 +174,9 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 %license LICENSE
 
 %changelog
+* Fri Nov 19 2021 RDO <dev@lists.rdoproject.org> 3.1.2-1
+- Update to 3.1.2
+
 * Fri Jul 03 2020 RDO <dev@lists.rdoproject.org> 3.1.1-1
 - Update to 3.1.1
 

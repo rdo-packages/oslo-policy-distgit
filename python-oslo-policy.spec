@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x5d2d1e4fb8d38e6af76c50d53d4fec30cf5ce3da
+%global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pypi_name oslo.policy
 %global pkg_name oslo-policy
@@ -11,7 +11,7 @@ An OpenStack library for policy.
 Test subpackage for the Oslo policy library.
 
 Name:           python-%{pkg_name}
-Version:        3.7.0
+Version:        3.7.1
 Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
@@ -193,6 +193,9 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run --black-regex test_generat
 %license LICENSE
 
 %changelog
+* Wed Jan 19 2022 RDO <dev@lists.rdoproject.org> 3.7.1-1
+- Update to 3.7.1
+
 * Fri Mar 12 2021 RDO <dev@lists.rdoproject.org> 3.7.0-1
 - Update to 3.7.0
 

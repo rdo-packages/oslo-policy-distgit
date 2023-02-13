@@ -159,8 +159,7 @@ mv %{buildroot}%{python3_sitelib}/oslo_policy/locale %{buildroot}%{_datadir}/loc
 
 %check
 export OS_TEST_PATH="./oslo_policy/tests"
-# Exclude test_generator_raises_error until https://review.opendev.org/#/c/741869/ is tag released
-PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run --black-regex test_generator_raises_error
+PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 
 %files -n python3-%{pkg_name}
 %doc README.rst

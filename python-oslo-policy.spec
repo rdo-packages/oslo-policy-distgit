@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0xa7475c5f2122fec3f90343223fe3bf5aad1080e4
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global pypi_name oslo.policy
 %global pkg_name oslo-policy
@@ -11,8 +11,8 @@ An OpenStack library for policy.
 Test subpackage for the Oslo policy library.
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        4.1.1
+Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
 License:        ASL 2.0
@@ -192,4 +192,7 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 %license LICENSE
 
 %changelog
+* Tue Mar 07 2023 RDO <dev@lists.rdoproject.org> 4.1.1-1
+- Update to 4.1.1
+
 

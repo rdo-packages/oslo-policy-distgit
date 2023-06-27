@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4158fc83_7202b903",
+        "filename": "python-oslo-policy.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-06-27T16:08:08Z",
+      "side": 0,
+      "message": "Some reason to remove this one?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 7
+      },
+      "revId": "c20ab5a96a2e0824537ad773c8e3541df039fd54",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}

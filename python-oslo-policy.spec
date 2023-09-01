@@ -18,8 +18,8 @@ An OpenStack library for policy.
 Test subpackage for the Oslo policy library.
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        4.2.1
+Release:        1%{?dist}
 Summary:        OpenStack oslo.policy library
 
 License:        Apache-2.0
@@ -185,4 +185,7 @@ export OS_TEST_PATH="./oslo_policy/tests"
 %license LICENSE
 
 %changelog
+* Fri Sep 01 2023 RDO <dev@lists.rdoproject.org> 4.2.1-1
+- Update to 4.2.1
+
 

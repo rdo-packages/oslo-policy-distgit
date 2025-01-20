@@ -68,7 +68,6 @@ Requires:  python3-%{pkg_name} = %{version}-%{release}
 Requires:  python3-hacking
 Requires:  python3-oslotest
 Requires:  python3-fixtures
-Requires:  python3-mock
 Requires:  python3-requests
 
 Requires:  python3-requests-mock
